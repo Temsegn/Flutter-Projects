@@ -60,32 +60,34 @@ class _StackPageState extends State<StackPage> {
                 Positioned(
                   top: 100, // Adjust position as needed
                   left: 100, // Adjust position as needed
-                  child: GestureDetector(
-                    onTap: colorChanger, // Change color when the amber box is tapped
-                    child: Stack(
-                      children: [
-                        // Amber Box
-                        Container(
-                          width: 200,
-                          height: 200,
-                          decoration: BoxDecoration(
-                            color: Colors.amber,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+                  child: Stack(
+                    children: [
+                      // Amber Box
+                      Container(
+                        width: 200,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          color: Colors.amber,
+                          borderRadius: BorderRadius.circular(20),
                         ),
+                      ),
 
-                        // Favorite Icon (Top-Right Corner of the Amber Box)
-                        Positioned(
-                          top: 10,
-                          right: 10,
+                      // Favorite Icon (Top-Right Corner of the Amber Box)
+                      Positioned(
+                        top: 10,
+                        right: 10,
+                        child: GestureDetector(
+                          onTap:
+                              colorChanger, // Change color when the amber box is tapped
+
                           child: Icon(
                             Icons.favorite,
                             color: iconColor, // Use the dynamic color
                             size: 30, // Optional: Change icon size
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ],
