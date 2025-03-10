@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
-import 'container/container_page.dart';
-import 'stack/stack_page.dart';
-import 'layout/layout_page2.dart';
-import 'provider/provider_page.dart';
 import 'package:provider/provider.dart';
-import 'provider/counter_model.dart';
- void main() {
- 
-  runApp( ChangeNotifierProvider(create: (context) => Counter(),
-  child:ProviderPage() ,
- ));
+import 'package:hive_flutter/hive_flutter.dart';
+import 'provider/counter_model.dart'; // Assuming Counter class is in counter_model.dart
+import 'provider/provider_page.dart';
+void main() async {
+  // Initialize Hive
+  await Hive.initFlutter();
+
+  // Open a Hive box
+  await Hive.openBox<int>('counts');
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => CounterModel(),
+      child: MyApp(),
+    ),
+  );
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: ProviderPage(),
+    );
+  }
 }
