@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'provider/counter_model.dart'; // Assuming Counter class is in counter_model.dart
-import 'provider/provider_page.dart';
+import 'form/form_page.dart'; // Import the FormPage
+
 void main() async {
-  // Initialize Hive
-  await Hive.initFlutter();
+  // Initialize Hive (if needed)
+  // await Hive.initFlutter();
 
-  // Open a Hive box
-  await Hive.openBox<int>('counts');
+  // Open a Hive box (if needed)
+  // await Hive.openBox('myBox');
 
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => CounterModel(),
-      child: MyApp(),
-    ),
-  );
+  runApp(MyApp()); // Run the app
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ProviderPage(),
+      title: 'Flutter Form App', // App title
+      theme: ThemeData(
+        primarySwatch: Colors.blue, // App theme
+      ),
+      home: FormPage(), // Set FormPage as the home page
     );
   }
 }
