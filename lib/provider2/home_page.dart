@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/provider2/second.dart';
+import 'package:flutter_project/themedata/theme_provider.dart';
 import 'list_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -10,10 +11,45 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late ThemeProvider _themeManager;
+
+  @override
+  void initState() {
+    super.initState();
+    _themeManager = Provider.of<ThemeProvider>(context, listen: false);
+    _themeManager.addListener(themeListener);
+  }
+
+  void themeListener() {
+    if (mounted) {
+      setState(() {}); // Update UI when theme changes
+    }
+  }
+
+  @override
+  void dispose() {
+    _themeManager.removeListener(themeListener);
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Number List")),
+      appBar: AppBar(
+        title: Text("Number List"),
+        actions: [
+          Consumer<ThemeProvider>(
+            builder: (context, themeProvider, child) {
+              return Switch(
+                value: themeProvider.themeMode == ThemeMode.dark,
+                onChanged: (newValue) {
+                  themeProvider.toggleTheme(newValue);
+                },
+              );
+            },
+          ),
+        ],
+      ),
 
       body: Column(
         children: [
@@ -26,8 +62,8 @@ class _HomePageState extends State<HomePage> {
             },
             child: Text("Go to Second Page"),
           ),
-          
-          Expanded( // ✅ Fix Overflow issue
+
+          Expanded( // ✅ Prevents overflow
             child: Consumer<ListProvider>(
               builder: (context, provider, child) {
                 return ListView.builder(
