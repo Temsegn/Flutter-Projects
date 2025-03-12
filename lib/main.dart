@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'rest_api/home_page.dart';
 import 'grid/grid.dart';
+import 'grid/grid_view_count.dart';
+import 'sliverappBar/silver_app.dart';
 void main() {
   runApp(MyApp());
 }
@@ -12,8 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      home: GridViewExample(),
+      theme: ThemeData.light(),
+      home: MySliverApp(),
     );
   }
 }
