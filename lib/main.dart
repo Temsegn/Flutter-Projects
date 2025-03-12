@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'rest_api/home_page.dart';
-
+import 'grid/grid.dart';
 void main() {
   runApp(MyApp());
 }
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: HomePage(),
+      home: GridViewExample(),
     );
   }
 }
