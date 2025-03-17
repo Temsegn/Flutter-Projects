@@ -1,91 +1,31 @@
 import 'package:flutter/material.dart';
-import 'rest_api/home_page.dart';
-import 'grid/grid.dart';
-import 'grid/grid_view_count.dart';
-import 'sliverappBar/silver_app.dart';
-void main() {
-  runApp(MyApp());
+import 'package:provider/provider.dart';
+import 'theme/home_pag.dart';
+import 'theme/theme.dart';
+import 'theme/themeData.dart';
+ import 'package:hive_flutter/hive_flutter.dart';
+
+void main() async {
+   await Hive.initFlutter();
+   await Hive.openBox('themebox');
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.light(),
-      home: MySliverApp(),
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: themeProvider.themeMode,
+      home: HomePage(),
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter_project/provider2/home_page.dart';
-// import 'package:flutter_project/themedata/theme.dart';
-// import 'form/form_page.dart'; // Import the FormPage
-// import 'package:provider/provider.dart';
-// import 'provider2/list_provider.dart';
-// import 'themedata/theme_provider.dart';
-
-// void main() {
-//   runApp(
-//     MultiProvider(
-//       providers: [
-//         ChangeNotifierProvider(create: (_) => ListProvider()),
-//         ChangeNotifierProvider(create: (_) => ThemeProvider()),
-//       ],
-//       child: MyApp(),
-//     ),
-//   );
-// }
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Consumer<ThemeProvider>(
-//       builder: (context, themeProvider, child) {
-//         return MaterialApp(
-//           debugShowCheckedModeBanner: false,
-//           title: 'Flutter Form App',
-//           theme: lightTheme, 
-//           darkTheme: darkTheme,
-//           themeMode: themeProvider.themeMode, // ✅ Uses Provider
-//           home: HomePage(),
-//         );
-//       },
-//     );
-//   }
-// }

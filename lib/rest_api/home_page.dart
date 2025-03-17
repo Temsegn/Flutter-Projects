@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
     String taskId,
     bool isCompleted,
     String title,
-    String description,
+    String description, 
   ) async {
     final url =
         "https://api.nstack.in/v1/todos/$taskId"; // Ensure the URL is correct.
@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar( 
         backgroundColor: const Color.fromARGB(255, 26, 26, 26),
         title: Center(
           child: Text(
@@ -142,8 +142,8 @@ class _HomePageState extends State<HomePage> {
                             fontSize: 20,
                             fontWeight:
                                 task['is_completed']
-                                    ? FontWeight.bold
-                                    : FontWeight.normal,
+                                    ? FontWeight.normal
+                                    : FontWeight.bold,
                           ),
                         ),
                       

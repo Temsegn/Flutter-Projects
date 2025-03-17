@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
           Expanded( // ✅ Prevents overflow
             child: Consumer<ListProvider>(
               builder: (context, provider, child) {
-                return ListView.builder(
+                return ListView.builder( 
                   itemCount: provider.numbers.length,
                   itemBuilder: (context, index) {
                     return ListTile(

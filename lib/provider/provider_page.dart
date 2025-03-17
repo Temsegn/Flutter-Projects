@@ -14,7 +14,7 @@ class  ProviderPage extends StatelessWidget {
             // Display the count
             Consumer<CounterModel>(
               builder: (context, counter, child) {
-                return Text(
+                return Text( 
                   'Count: ${counter.count}',
                   style: TextStyle(fontSize: 24), 
                 );

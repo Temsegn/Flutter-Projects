@@ -18,7 +18,7 @@ class FormPageState extends State<FormPage> {
 
   @override
   void dispose() {
-    _nameController.dispose();
+    _nameController.dispose(); 
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -45,7 +45,7 @@ class FormPageState extends State<FormPage> {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your name';
                   } else if (RegExp('r^[a-zA-Z]').hasMatch(value!)) {
-                    return 'Please enter valid name';
+                    return 'Please enter valid name'; 
                   }
                   return null;
                 },
